@@ -10,11 +10,11 @@ import (
 	owm "github.com/ramsgoli/Golang-OpenWeatherMap"
 )
 
-func GetWeatherApi() string {
+func GetWeatherApi() owm.OpenWeatherMap {
 	if err := godotenv.Load(); err != nil {
 		log.Fatalln(err)
 	}
-	return os.Getenv("WeatherApi")
+	return owm.OpenWeatherMap{API_KEY: os.Getenv("WeatherApi")}
 }
 
 func GetCity() string {
@@ -33,7 +33,7 @@ func ToCelsius(temp float64) float64 {
 }
 
 func main() {
-	api := owm.OpenWeatherMap{API_KEY: GetWeatherApi()}
+	api := GetWeatherApi()
 	cityName := GetCity()
 
 	currentWeather, err := api.CurrentWeatherFromCity(cityName)
