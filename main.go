@@ -23,7 +23,7 @@ func GetCity() string {
 		log.Fatalln("引数がありません。引数で都市名を選択してください")
 	}
 	if len(flag.Args()) > 1 {
-		log.Fatalln("引数が大すぎます。都市名のみ選択してください")
+		log.Fatalln("引数が多すぎます。都市名のみ選択してください")
 	}
 	return flag.Arg(0)
 }
